@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NewPlayer : PhysicsObject
@@ -75,6 +76,11 @@ public class NewPlayer : PhysicsObject
         {
             StartCoroutine(ActivateAttack());
         }
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public void UpdateUI()
@@ -113,4 +119,9 @@ public class NewPlayer : PhysicsObject
         yield return new WaitForSeconds(attackDuration);
         attackBox.SetActive(false);
     }
+    public void Die()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
 }
