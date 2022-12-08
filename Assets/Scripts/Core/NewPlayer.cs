@@ -9,7 +9,7 @@ public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
     [SerializeField] private float attackDuration = 0.14159f;
-    [SerializeField] public float attackPower = 10;
+    public float attackPower = 10;
     [SerializeField] private float jumpPower = 12;
     [SerializeField] private float maxSpeed = 8;
 
