@@ -20,9 +20,12 @@ public class NewPlayer : PhysicsObject
 
     [Header("References")]
     [SerializeField] private GameObject attackBox;
+    // Default/empty inventory item slot sprite.
     [SerializeField] private Sprite inventoryBlankSprite;
+    // The Dictionary stores all inventory items (key + value).
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     private Vector2 healthBarOriginalSize;
+    // Health bar reference to be used while updating the UI.
     private RectTransform healthBarRect;
 
     // Singleton instantiation.

@@ -13,8 +13,11 @@ public class Enemy : PhysicsObject
     private RaycastHit2D leftLedgeRaycastHit;
     private RaycastHit2D rightWallRaycastHit;
     private RaycastHit2D leftWallRaycastHit;
+
+    // Offset from the center of the raycast origin.
     [SerializeField] private Vector2 raycastOffset;
     [SerializeField] private float raycastLength = 2;
+    // LayerMask -> Defines which layers do we want the raycast to interact with.
     [SerializeField] private LayerMask raycastLayerMask;
     [SerializeField] private float attackPower = 10;
 
