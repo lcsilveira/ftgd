@@ -9,10 +9,9 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
-            //NewPlayer player = collision.gameObject.GetComponent<NewPlayer>();
             if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItem))
             {
-                Destroy(gameObject);
+                Destroy(this.gameObject);
                 NewPlayer.Instance.ClearInventory();
             }
         }

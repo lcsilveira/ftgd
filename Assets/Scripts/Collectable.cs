@@ -10,32 +10,21 @@ public class Collectable : MonoBehaviour
     public float health = 100;
     public float maxHealth = 100;
 
-    private void Start()
-    {
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Alternative to the "global" property
-        //NewPlayer newPlayer = collision.gameObject.GetComponent<NewPlayer>();
-        //if (collision.gameObject.name == "Player")
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
             if (itemType == ItemType.Coin)
-            {
                 NewPlayer.Instance.coinsCollected++;
-            }
             else if (itemType == ItemType.Health)
-            {
-                NewPlayer.Instance.health+=10;
-            }
+                NewPlayer.Instance.health += 10;
             else if (itemType == ItemType.Inventory)
             {
-                Sprite itemSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+                Sprite itemSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
                 NewPlayer.Instance.AddInventoryItem(inventoryItemName, itemSprite);
             }
             NewPlayer.Instance.UpdateUI();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

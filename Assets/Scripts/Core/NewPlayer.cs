@@ -7,26 +7,21 @@ using UnityEngine.UI;
 
 public class NewPlayer : PhysicsObject
 {
-    [SerializeField] private float maxSpeed = 8;
-    [SerializeField] private float jumpPower = 12;
+    [Header("Attributes")]
     [SerializeField] private float attackDuration = 0.14159f;
-    [SerializeField] private GameObject attackBox;
     [SerializeField] public float attackPower = 10;
+    [SerializeField] private float jumpPower = 12;
+    [SerializeField] private float maxSpeed = 8;
 
-    public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
-    public Image inventoryItemImage;
-    //public Sprite keySprite;
-    //public Sprite keyGemSprite;
-    public Sprite inventoryBlankSprite;
-
-    // Coins.
+    [Header("Inventory/UI")]
     public int coinsCollected = 0;
-    public TMP_Text coinsText;
-
-    // Health bar stuff.
-    public Image healthBar;
     public float health = 50;
-    private float maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
+
+    [Header("References")]
+    [SerializeField] private GameObject attackBox;
+    [SerializeField] private Sprite inventoryBlankSprite;
+    public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     private Vector2 healthBarOriginalSize;
     private RectTransform healthBarRect;
 
@@ -37,59 +32,56 @@ public class NewPlayer : PhysicsObject
         get
         {
             if (instance == null)
-            {
                 instance = GameObject.FindObjectOfType<NewPlayer>();
-            }
             return instance;
         }
     }
 
+    // Happens BEFORE Start().
+    private void Awake()
+    {
+        // If the original player is here, the scene player is self-destroyed.
+        if (GameObject.Find("OriginalPlayer"))
+            Destroy(this.gameObject);
+    }
 
     void Start()
     {
-        healthBarRect = healthBar.rectTransform;
+        DontDestroyOnLoad(this.gameObject);
+        this.gameObject.name = "OriginalPlayer";
+
+        healthBarRect = GameManager.Instance.healthBar.rectTransform;
         healthBarOriginalSize = healthBarRect.sizeDelta;
         UpdateUI();
+        SetSpawnPosition();
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Jump") && grounded)
-        {
             velocity.y = jumpPower;
-        }
-        // targetVelocity = vem do obj
+
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
         // Flip the player's localScale.x if move speed is great than .01 or less than -.01.
         if (targetVelocity.x < -.01)
-        {
             transform.localScale = new Vector2(-1, 1);
-        }
         else if (targetVelocity.x > .01)
-        {
             transform.localScale = new Vector2(1, 1);
-        }
 
         // Activate the attackBox when pressing Fire1 key.
         if (Input.GetButtonDown("Fire1"))
-        {
             StartCoroutine(ActivateAttack());
-        }
 
         if (health <= 0)
-        {
             Die();
-        }
     }
 
     public void UpdateUI()
     {
         float healthPercentage;
         if (health <= maxHealth)
-        {
             healthPercentage = health / maxHealth;
-        }
         else
         {
             // Avoid health being greater than maxHealth.
@@ -98,18 +90,18 @@ public class NewPlayer : PhysicsObject
         }
         healthBarRect.sizeDelta = new Vector2(healthBarOriginalSize.x * healthPercentage, healthBarRect.sizeDelta.y);
 
-        coinsText.text = coinsCollected.ToString();
+        GameManager.Instance.coinsText.text = coinsCollected.ToString();
     }
 
     public void AddInventoryItem(string itemName, Sprite sprite)
     {
         inventory.Add(itemName, sprite);
-        inventoryItemImage.sprite = inventory[itemName];
+        GameManager.Instance.inventoryItemImage.sprite = inventory[itemName];
     }
     public void ClearInventory()
     {
         inventory.Clear();
-        inventoryItemImage.sprite = inventoryBlankSprite;
+        GameManager.Instance.inventoryItemImage.sprite = inventoryBlankSprite;
     }
 
     // Show attackbox and wait X seconds before hidding it (called through coroutine).
@@ -121,7 +113,12 @@ public class NewPlayer : PhysicsObject
     }
     public void Die()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetSpawnPosition()
+    {
+        this.gameObject.transform.position = GameObject.Find("SpawnLocation").transform.position;
     }
 
 }
