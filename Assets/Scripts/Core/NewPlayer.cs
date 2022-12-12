@@ -67,9 +67,9 @@ public class NewPlayer : PhysicsObject
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
         // Flip the player's localScale.x if move speed is great than .01 or less than -.01.
-        if (targetVelocity.x < -.01)
+        if (targetVelocity.x < -.5)
             transform.localScale = new Vector2(-1, 1);
-        else if (targetVelocity.x > .01)
+        else if (targetVelocity.x > .5)
             transform.localScale = new Vector2(1, 1);
 
         // Activate the attackBox when pressing Fire1 key.
