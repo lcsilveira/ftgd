@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4732017734057457425}
   - component: {fileID: 5174966056856323450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamppost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247173191122618710}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.375002, y: 16.975, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

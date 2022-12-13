@@ -62,5 +62,11 @@ public class Enemy : PhysicsObject
             NewPlayer.Instance.health -= attackPower;
             NewPlayer.Instance.UpdateUI();
         }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // If it collides with another enemy, turn around
+            // Since the raycast is ignoring "Enemy" layer in order to prevent raycast hit with itself
+            direction *= -1;
+        }
     }
 }

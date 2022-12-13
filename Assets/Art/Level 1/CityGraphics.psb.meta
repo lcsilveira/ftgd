@@ -305,13 +305,13 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 7, z: 0, w: 6}
     rect:
       serializedVersion: 2
-      x: 4063
-      y: 5735
-      width: 38
-      height: 110
+      x: 4062
+      y: 5734
+      width: 40
+      height: 112
     spriteID: bb89a71af50d49643aaf8ee56b7039a7
     spriteBone: []
     spriteOutline: []
@@ -637,6 +637,27 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+  - name: CityGraphics_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4114
+      y: 5815
+      width: 2
+      height: 15
+    spriteID: 08b8cbc8a4b9fae499fe46ac872f9d37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4114, y: 5815}
   characterData:
     bones: []
     parts: []
@@ -653,7 +674,7 @@ ScriptedImporter:
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1

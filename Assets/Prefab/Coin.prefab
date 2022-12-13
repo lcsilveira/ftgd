@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1729361025938938385}
   - component: {fileID: -4517577714712808903}
   - component: {fileID: 2139675112325839466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
