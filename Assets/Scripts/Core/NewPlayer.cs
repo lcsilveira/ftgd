@@ -19,6 +19,7 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private float maxHealth = 100;
 
     [Header("References")]
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject attackBox;
     // Default/empty inventory item slot sprite.
     [SerializeField] private Sprite inventoryBlankSprite;
@@ -78,6 +79,11 @@ public class NewPlayer : PhysicsObject
 
         if (health <= 0)
             Die();
+
+        // Set each animator parameters.
+        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("velocityY", velocity.y);
+        animator.SetBool("grounded", grounded);
     }
 
     public void UpdateUI()
