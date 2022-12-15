@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 53aa66a9c67924847ab8d816f7e292ed
+guid: 0167da9b960be644aacc8aea48701874
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ ScriptedImporter:
     spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 1
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Pixel
+  - name: Background
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -100,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1
-      height: 1
-    spriteID: 6ae40baafb152314db9b2ac37c9f0d11
+      width: 10
+      height: 10
+    spriteID: 538e4f39549a69645a5ca757afee331b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -186,11 +186,11 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Pixel
-    spriteName: Pixel
+  - name: Background
+    spriteName: Background
     isGroup: 0
     parentIndex: -1
-    spriteID: 6ae40baafb152314db9b2ac37c9f0d11
+    spriteID: 538e4f39549a69645a5ca757afee331b
     layerID: 1
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
