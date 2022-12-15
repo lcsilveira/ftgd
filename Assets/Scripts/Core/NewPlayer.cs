@@ -75,7 +75,10 @@ public class NewPlayer : PhysicsObject
 
         // Activate the attackBox when pressing Fire1 key.
         if (Input.GetButtonDown("Fire1"))
-            StartCoroutine(ActivateAttack());
+        {
+            //StartCoroutine(ActivateAttack());
+            animator.SetTrigger("attack");
+        }
 
         if (health <= 0)
             Die();
@@ -84,6 +87,7 @@ public class NewPlayer : PhysicsObject
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         animator.SetFloat("velocityY", velocity.y);
         animator.SetBool("grounded", grounded);
+        animator.SetFloat("attackDirectionY", Input.GetAxis("Vertical"));
     }
 
     public void UpdateUI()
@@ -114,12 +118,12 @@ public class NewPlayer : PhysicsObject
     }
 
     // Show attackbox and wait X seconds before hidding it (called through coroutine).
-    public IEnumerator ActivateAttack()
-    {
-        attackBox.SetActive(true);
-        yield return new WaitForSeconds(attackDuration);
-        attackBox.SetActive(false);
-    }
+    //public IEnumerator ActivateAttack()
+    //{
+    //    attackBox.SetActive(true);
+    //    yield return new WaitForSeconds(attackDuration);
+    //    attackBox.SetActive(false);
+    //}
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
