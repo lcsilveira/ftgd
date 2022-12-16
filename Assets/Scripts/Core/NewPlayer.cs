@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
-    [SerializeField] private float attackDuration = 0.14159f;
+    //[SerializeField] private float attackDuration = 0.14159f;
     public float attackPower = 10;
     [SerializeField] private float jumpPower = 12;
     [SerializeField] private float maxSpeed = 8;
@@ -28,6 +28,9 @@ public class NewPlayer : PhysicsObject
     private Vector2 healthBarOriginalSize;
     // Health bar reference to be used while updating the UI.
     private RectTransform healthBarRect;
+    public AudioSource sfxAudioSource;
+    public AudioSource musicAudioSource;
+    public AudioSource ambianceAudioSource;
 
     // Singleton instantiation.
     private static NewPlayer instance;
@@ -63,7 +66,11 @@ public class NewPlayer : PhysicsObject
     void Update()
     {
         if (Input.GetButtonDown("Jump") && grounded)
+        {
+            AnimatorFunctions animatorFunctions = this.gameObject.GetComponent<AnimatorFunctions>();
+            animatorFunctions.PlaySound("jump");
             velocity.y = jumpPower;
+        }
 
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
