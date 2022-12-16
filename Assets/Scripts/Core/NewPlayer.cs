@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
-    //[SerializeField] private float attackDuration = 0.14159f;
     public float attackPower = 10;
     [SerializeField] private float jumpPower = 12;
     [SerializeField] private float maxSpeed = 8;
@@ -124,13 +123,6 @@ public class NewPlayer : PhysicsObject
         GameManager.Instance.inventoryItemImage.sprite = inventoryBlankSprite;
     }
 
-    // Show attackbox and wait X seconds before hidding it (called through coroutine).
-    //public IEnumerator ActivateAttack()
-    //{
-    //    attackBox.SetActive(true);
-    //    yield return new WaitForSeconds(attackDuration);
-    //    attackBox.SetActive(false);
-    //}
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
