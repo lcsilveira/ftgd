@@ -1175,8 +1175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 2.5
-  attackDuration: 0.14159
-  attackPower: 10
+  attackPower: 5
+  isVulnerable: 1
   jumpPower: 12
   maxSpeed: 8
   coinsCollected: 0
@@ -1200,4 +1200,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bfdee6af27ea2458a9544ae4cf61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 0e64e9b9e4daa4805ba66582f4fb6059, type: 3}
+  soundBank:
+  - name: punch
+    variations:
+    - {fileID: 8300000, guid: def22ce97dc3f41bda43f7520ec1bb2d, type: 3}
+    volume: 0.5
+  - name: footsteps
+    variations:
+    - {fileID: 8300000, guid: 577db40be60237844be37e1d02b0aed6, type: 3}
+    - {fileID: 8300000, guid: 5719a0426e7b6fa4996233f5fef5e7f0, type: 3}
+    - {fileID: 8300000, guid: 0945e93586ebcb94da4724f6986ba731, type: 3}
+    volume: 0.1
+  - name: jump
+    variations:
+    - {fileID: 8300000, guid: 77f0854f81081e140b5e9845ff718247, type: 3}
+    volume: 0.1
+  - name: hurt
+    variations:
+    - {fileID: 8300000, guid: 198e7e60462194dd6a0dafa49b2e3dc4, type: 3}
+    volume: 0.786

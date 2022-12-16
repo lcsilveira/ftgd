@@ -7,9 +7,11 @@ public class AttackBox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy;
-        if (enemy = collision.gameObject.GetComponent<Enemy>())
+        if (enemy = collision.gameObject.GetComponentInParent<Enemy>())
         {
-            enemy.health -= NewPlayer.Instance.attackPower;
+            NewPlayer.Instance.BecomeInvulnerable();
+            //enemy.health -= NewPlayer.Instance.attackPower;
+            enemy.Hurt(NewPlayer.Instance.attackPower);
         }
     }
 }

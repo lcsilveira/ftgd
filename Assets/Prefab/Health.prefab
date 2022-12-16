@@ -102,6 +102,8 @@ MonoBehaviour:
   inventoryItemName: 
   health: 100
   maxHealth: 100
+  collectionSound: {fileID: 8300000, guid: 23e066003c7024cc6866ee389e349a12, type: 3}
+  collectionSoundVolume: 0.25
 --- !u!61 &2147579874271394738
 BoxCollider2D:
   m_ObjectHideFlags: 0

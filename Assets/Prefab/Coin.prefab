@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a13ae7664e82304bb494fdc1ce96f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionSound: {fileID: 8300000, guid: a56fc866ceb3e49b7958efd430049343, type: 3}
+  collectionSoundVolume: 0.4
   itemType: 0
   inventoryItemName: 
   health: 100

@@ -9,6 +9,7 @@ public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
     public float attackPower = 10;
+    [SerializeField] public bool isVulnerable = true; // Set if the player can be hurt or not.
     [SerializeField] private float jumpPower = 12;
     [SerializeField] private float maxSpeed = 8;
 
@@ -82,7 +83,6 @@ public class NewPlayer : PhysicsObject
         // Activate the attackBox when pressing Fire1 key.
         if (Input.GetButtonDown("Fire1"))
         {
-            //StartCoroutine(ActivateAttack());
             animator.SetTrigger("attack");
         }
 
@@ -94,6 +94,30 @@ public class NewPlayer : PhysicsObject
         animator.SetFloat("velocityY", velocity.y);
         animator.SetBool("grounded", grounded);
         animator.SetFloat("attackDirectionY", Input.GetAxis("Vertical"));
+    }
+
+    private IEnumerator InvulnerableCoroutine(float waitSeconds)
+    {
+        NewPlayer.Instance.isVulnerable = false;
+        yield return new WaitForSeconds(waitSeconds);
+        NewPlayer.Instance.isVulnerable = true;
+    }
+
+    public void BecomeInvulnerable()
+    {
+        StartCoroutine(InvulnerableCoroutine(0.2f));  // Become invulnerable for 0.2s when hurting an enemy.
+    }
+
+    // Player hurt.
+    public void Hurt(float hurtAmount)
+    {
+        if (!isVulnerable)
+            return;
+
+        StartCoroutine(InvulnerableCoroutine(0.2f)); // Become invulnerable for 0.2s after being hurted.
+        animator.SetTrigger("hurt");
+        health -= hurtAmount;
+        UpdateUI();
     }
 
     public void UpdateUI()

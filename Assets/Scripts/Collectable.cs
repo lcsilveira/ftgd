@@ -5,15 +5,26 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     enum ItemType { Coin, Health, Ammo, Inventory };
+
+    [Header("General")]
     [SerializeField] private ItemType itemType;
     [SerializeField] private string inventoryItemName;
     public float health = 100;
     public float maxHealth = 100;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip collectionSound;
+    [Range(0f, 1f)]
+    [SerializeField] private float collectionSoundVolume = 1f;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
+            if (collectionSound)
+                NewPlayer.Instance.sfxAudioSource.PlayOneShot(collectionSound, collectionSoundVolume * Random.Range(0.8f, 1f));
+
             if (itemType == ItemType.Coin)
                 NewPlayer.Instance.coinsCollected++;
             else if (itemType == ItemType.Health)
