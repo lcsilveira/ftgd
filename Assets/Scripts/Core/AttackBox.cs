@@ -10,7 +10,6 @@ public class AttackBox : MonoBehaviour
         if (enemy = collision.gameObject.GetComponentInParent<Enemy>())
         {
             NewPlayer.Instance.BecomeInvulnerable();
-            //enemy.health -= NewPlayer.Instance.attackPower;
             enemy.Hurt(NewPlayer.Instance.attackPower);
         }
     }

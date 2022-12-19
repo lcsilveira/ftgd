@@ -69,6 +69,7 @@ public class NewPlayer : PhysicsObject
         {
             AnimatorFunctions animatorFunctions = this.gameObject.GetComponent<AnimatorFunctions>();
             animatorFunctions.PlaySound("jump");
+            animatorFunctions.EmitParticles("footsteps");
             velocity.y = jumpPower;
         }
 
