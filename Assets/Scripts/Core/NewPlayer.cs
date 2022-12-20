@@ -9,6 +9,7 @@ public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
     public float attackPower = 10;
+    private bool frozen = false;
     [SerializeField] public bool isVulnerable = true; // Set if the player can be hurt or not.
     [SerializeField] private float jumpPower = 12;
     [SerializeField] private float maxSpeed = 8;
@@ -20,7 +21,9 @@ public class NewPlayer : PhysicsObject
 
     [Header("References")]
     [SerializeField] private Animator animator;
+    private AnimatorFunctions animatorFunctions;
     [SerializeField] private GameObject attackBox;
+    public CameraEffects cameraEffects;
     // Default/empty inventory item slot sprite.
     [SerializeField] private Sprite inventoryBlankSprite;
     // The Dictionary stores all inventory items (key + value).
@@ -57,6 +60,8 @@ public class NewPlayer : PhysicsObject
         DontDestroyOnLoad(this.gameObject);
         this.gameObject.name = "OriginalPlayer";
 
+        animatorFunctions = this.gameObject.GetComponent<AnimatorFunctions>();
+
         healthBarRect = GameManager.Instance.healthBar.rectTransform;
         healthBarOriginalSize = healthBarRect.sizeDelta;
         UpdateUI();
@@ -65,9 +70,11 @@ public class NewPlayer : PhysicsObject
 
     void Update()
     {
+        if (frozen)
+            return;
+
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            AnimatorFunctions animatorFunctions = this.gameObject.GetComponent<AnimatorFunctions>();
             animatorFunctions.PlaySound("jump");
             animatorFunctions.EmitParticles("footsteps");
             velocity.y = jumpPower;
@@ -88,7 +95,7 @@ public class NewPlayer : PhysicsObject
         }
 
         if (health <= 0)
-            Die();
+            StartCoroutine(Die());
 
         // Set each animator parameters.
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
@@ -100,7 +107,7 @@ public class NewPlayer : PhysicsObject
     private IEnumerator InvulnerableCoroutine(float waitSeconds)
     {
         NewPlayer.Instance.isVulnerable = false;
-        yield return new WaitForSeconds(waitSeconds);
+        yield return new WaitForSecondsRealtime(waitSeconds);
         NewPlayer.Instance.isVulnerable = true;
     }
 
@@ -114,6 +121,9 @@ public class NewPlayer : PhysicsObject
     {
         if (!isVulnerable)
             return;
+
+        StartCoroutine(FreezeEffect(.2f, .7f));
+        cameraEffects.Shake(2, .1f);
 
         StartCoroutine(InvulnerableCoroutine(0.2f)); // Become invulnerable for 0.2s after being hurted.
         animator.SetTrigger("hurt");
@@ -148,9 +158,35 @@ public class NewPlayer : PhysicsObject
         GameManager.Instance.inventoryItemImage.sprite = inventoryBlankSprite;
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        frozen = true;
+        isVulnerable = false;
+        animatorFunctions.EmitParticles("dead");
+        animatorFunctions.PlaySound("dead");
+        animator.SetBool("dead", true);
+        yield return new WaitForSecondsRealtime(2);
+        LoadLevel(SceneManager.GetActiveScene().name);
+    }
+
+    public IEnumerator FreezeEffect(float length, float timeScale)
+    {
+        Time.timeScale = timeScale;
+        yield return new WaitForSecondsRealtime(length);
+        Time.timeScale = 1;
+    }
+
+    public void LoadLevel(string loadSceneString)
+    {
+        animator.SetBool("dead", false);
+        health = 50;
+        coinsCollected = 0;
+        ClearInventory();
+        frozen = false;
+        isVulnerable = true;
+        SceneManager.LoadScene(loadSceneString);
+        SetSpawnPosition();
+        UpdateUI();
     }
 
     public void SetSpawnPosition()

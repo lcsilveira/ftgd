@@ -17,11 +17,21 @@ public class Collectable : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float collectionSoundVolume = 1f;
 
+    [Header("References")]
+    [SerializeField] private ParticleSystem particlesGlitter;
+    [SerializeField] private Sprite inventoryIcon; // If this specific item will be represented by a different icon on the UI.
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
+            if (particlesGlitter)
+            {
+                particlesGlitter.gameObject.transform.parent = null;
+                particlesGlitter.gameObject.SetActive(true);
+                Destroy(particlesGlitter.gameObject, particlesGlitter.main.duration);
+            }
+
             if (collectionSound)
                 NewPlayer.Instance.sfxAudioSource.PlayOneShot(collectionSound, collectionSoundVolume * Random.Range(0.8f, 1f));
 
@@ -31,7 +41,8 @@ public class Collectable : MonoBehaviour
                 NewPlayer.Instance.health += 10;
             else if (itemType == ItemType.Inventory)
             {
-                Sprite itemSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
+                Sprite itemSprite;
+                itemSprite = inventoryIcon ? inventoryIcon : this.gameObject.GetComponent<SpriteRenderer>().sprite;
                 NewPlayer.Instance.AddInventoryItem(inventoryItemName, itemSprite);
             }
             NewPlayer.Instance.UpdateUI();

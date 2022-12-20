@@ -17,6 +17,7 @@ public class Enemy : PhysicsObject
 
     [Header("References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem particlesEnemyExplosion;
     private RaycastHit2D rightLedgeRaycastHit;
     private RaycastHit2D leftLedgeRaycastHit;
     private RaycastHit2D rightWallRaycastHit;
@@ -60,6 +61,14 @@ public class Enemy : PhysicsObject
         {
             if (deathSound)
                 NewPlayer.Instance.sfxAudioSource.PlayOneShot(deathSound, enemySoundVolume);
+
+            NewPlayer.Instance.StartCoroutine(NewPlayer.Instance.FreezeEffect(.2f, .7f));
+            NewPlayer.Instance.cameraEffects.Shake(5, .1f);
+
+            particlesEnemyExplosion.gameObject.transform.parent = null;
+            particlesEnemyExplosion.gameObject.SetActive(true);
+            Destroy(particlesEnemyExplosion.gameObject, particlesEnemyExplosion.main.duration);
+
             Destroy(this.gameObject);
         }
     }
