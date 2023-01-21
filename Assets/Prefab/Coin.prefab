@@ -104,8 +104,9 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   collectionSound: {fileID: 8300000, guid: a56fc866ceb3e49b7958efd430049343, type: 3}
-  collectionSoundVolume: 0.4
+  collectionSoundVolume: 0.1
   particlesGlitter: {fileID: 852635991336862923}
+  inventoryIcon: {fileID: 0}
 --- !u!61 &2139675112325839466
 BoxCollider2D:
   m_ObjectHideFlags: 0

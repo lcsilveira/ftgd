@@ -104,16 +104,16 @@ public class NewPlayer : PhysicsObject
         animator.SetFloat("attackDirectionY", Input.GetAxis("Vertical"));
     }
 
-    private IEnumerator InvulnerableCoroutine(float waitSeconds)
+    private IEnumerator InvulnerableCoroutine(float invulnerableTime)
     {
         NewPlayer.Instance.isVulnerable = false;
-        yield return new WaitForSecondsRealtime(waitSeconds);
+        yield return new WaitForSecondsRealtime(invulnerableTime);
         NewPlayer.Instance.isVulnerable = true;
     }
 
-    public void BecomeInvulnerable()
+    public void BecomeInvulnerable(float invulnerableTime)
     {
-        StartCoroutine(InvulnerableCoroutine(0.2f));  // Become invulnerable for 0.2s when hurting an enemy.
+        StartCoroutine(InvulnerableCoroutine(invulnerableTime));  // Become invulnerable for 0.2s when hurting an enemy.
     }
 
     // Player hurt.
@@ -125,7 +125,7 @@ public class NewPlayer : PhysicsObject
         StartCoroutine(FreezeEffect(.2f, .7f));
         cameraEffects.Shake(2, .1f);
 
-        StartCoroutine(InvulnerableCoroutine(0.2f)); // Become invulnerable for 0.2s after being hurted.
+        BecomeInvulnerable(1f); // Become invulnerable for 1s after being hurted.
         animator.SetTrigger("hurt");
         health -= hurtAmount;
         UpdateUI();

@@ -130,13 +130,13 @@ MonoBehaviour:
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 19
-  raycastLength: 0.75
+  raycastLength: 0.3
   raycastOffset: {x: 0.5, y: 0.5}
   animator: {fileID: 1757768252275101019}
   particlesEnemyExplosion: {fileID: 743418659387628600}
   hurtSound: {fileID: 8300000, guid: 827213ae71917459b9c9368275ce2059, type: 3}
   deathSound: {fileID: 8300000, guid: 56814317db488434ab7d2ddd0b17c4c4, type: 3}
-  enemySoundVolume: 0.8
+  enemySoundVolume: 0.5
 --- !u!95 &1757768252275101019
 Animator:
   serializedVersion: 4

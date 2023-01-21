@@ -36,26 +36,31 @@ public class Enemy : PhysicsObject
         // Check for right ledge.
         rightLedgeRaycastHit = Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down, raycastLength);
         Debug.DrawRay(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down * raycastLength, Color.red);
-        if (rightLedgeRaycastHit.collider == null)
-            direction = -1;
 
         // Check for left ledge.
         leftLedgeRaycastHit = Physics2D.Raycast(new Vector2(transform.position.x - raycastOffset.x, transform.position.y), Vector2.down, raycastLength);
         Debug.DrawRay(new Vector2(transform.position.x - raycastOffset.x, transform.position.y), Vector2.down * raycastLength, Color.blue);
-        if (leftLedgeRaycastHit.collider == null)
-            direction = 1;
 
         // Check for right wall.
         rightWallRaycastHit = Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset.x, transform.position.y + raycastOffset.y), Vector2.right, raycastLength, raycastLayerMask);
         Debug.DrawRay(new Vector2(transform.position.x + raycastOffset.x, transform.position.y + raycastOffset.y), Vector2.right * raycastLength, Color.red);
-        if (rightWallRaycastHit.collider != null)
-            direction = -1;
 
         // Check for left wall.
         leftWallRaycastHit = Physics2D.Raycast(new Vector2(transform.position.x - raycastOffset.x, transform.position.y + raycastOffset.y), Vector2.left, raycastLength, raycastLayerMask);
         Debug.DrawRay(new Vector2(transform.position.x - raycastOffset.x, transform.position.y + raycastOffset.y), Vector2.left * raycastLength, Color.blue);
-        if (leftWallRaycastHit.collider != null)
+
+        if (
+            direction != -1 &&
+            (rightWallRaycastHit.collider != null || rightLedgeRaycastHit.collider == null))
+        {
+            direction = -1;
+        }
+        else if (
+            direction != 1 &&
+            (leftWallRaycastHit.collider != null || leftLedgeRaycastHit.collider == null))
+        {
             direction = 1;
+        }
 
         if (health <= 0)
         {
@@ -84,11 +89,17 @@ public class Enemy : PhysicsObject
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == NewPlayer.Instance.gameObject)
-            NewPlayer.Instance.Hurt(attackPower);
         // If it collides with another enemy, turn around
         // Since the raycast is ignoring "Enemy" layer in order to prevent raycast hit with itself
-        else if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
             direction *= -1;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {   
+        if (collision.gameObject == NewPlayer.Instance.gameObject)
+        {
+            NewPlayer.Instance.Hurt(attackPower);
+        }
     }
 }
