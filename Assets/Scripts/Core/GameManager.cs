@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Animator uiAnimator;
     public Image healthBar;
     public TMP_Text coinsText;
     public Image inventoryItemImage;

@@ -10,6 +10,7 @@ public class AudioTrigger : MonoBehaviour
 
     private AudioSource audioSource;
     [SerializeField] private bool autoPlay; //Begins playing sound immediately without the player triggering the collider
+    [SerializeField] private bool controlsTitle; //This allows the level title to fade in while also fading in the music
     [SerializeField] private float fadeSpeed; //How fast do we increase the volume? If set to 0, it will just play at a volume of 1
     [SerializeField] private bool loop;
     [SerializeField] private bool playOnce; //If set to true, the sound will only play once if triggered
@@ -78,6 +79,12 @@ public class AudioTrigger : MonoBehaviour
             {
                 if (!triggered)
                 {
+                    if (controlsTitle)
+                    {
+                        //The UI Animator inside the Game Manager should set the animator trigger to ShowTitle
+                        GameManager.Instance.uiAnimator.SetTrigger("showTitle");
+                        controlsTitle = false;
+                    }
                     triggered = true;
                 }
             }

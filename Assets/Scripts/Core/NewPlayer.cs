@@ -9,6 +9,8 @@ public class NewPlayer : PhysicsObject
 {
     [Header("Attributes")]
     public float attackPower = 10;
+    [SerializeField] private float fallForgiveness = 1; // How much time the players have as "forgiveness" when falling from ledges. This way they can still jump even when they are not grounded.
+    [SerializeField] private float fallForgivenessCounter;
     private bool frozen = false;
     [SerializeField] public bool isVulnerable = true; // Set if the player can be hurt or not.
     [SerializeField] private float jumpPower = 12;
@@ -73,11 +75,19 @@ public class NewPlayer : PhysicsObject
         if (frozen)
             return;
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (!grounded)
+        {
+            fallForgivenessCounter += Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && fallForgivenessCounter < fallForgiveness)
         {
             animatorFunctions.PlaySound("jump");
             animatorFunctions.EmitParticles("footsteps");
             velocity.y = jumpPower;
+
+            grounded = false;
+            fallForgivenessCounter = fallForgiveness; // Prevent double jump.
         }
 
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
