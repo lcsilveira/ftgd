@@ -74,7 +74,7 @@ public class Enemy : PhysicsObject
             particlesEnemyExplosion.gameObject.SetActive(true);
             Destroy(particlesEnemyExplosion.gameObject, particlesEnemyExplosion.main.duration);
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

@@ -54,15 +54,15 @@ public class NewPlayer : PhysicsObject
     {
         // If the original player is here, the scene player is self-destroyed.
         if (GameObject.Find("OriginalPlayer"))
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        this.gameObject.name = "OriginalPlayer";
+        DontDestroyOnLoad(gameObject);
+        gameObject.name = "OriginalPlayer";
 
-        animatorFunctions = this.gameObject.GetComponent<AnimatorFunctions>();
+        animatorFunctions = gameObject.GetComponent<AnimatorFunctions>();
 
         healthBarRect = GameManager.Instance.healthBar.rectTransform;
         healthBarOriginalSize = healthBarRect.sizeDelta;
@@ -76,19 +76,12 @@ public class NewPlayer : PhysicsObject
             return;
 
         if (!grounded)
-        {
             fallForgivenessCounter += Time.deltaTime;
-        }
+        else
+            fallForgivenessCounter = 0;
 
         if (Input.GetButtonDown("Jump") && fallForgivenessCounter < fallForgiveness)
-        {
-            animatorFunctions.PlaySound("jump");
-            animatorFunctions.EmitParticles("footsteps");
-            velocity.y = jumpPower;
-
-            grounded = false;
-            fallForgivenessCounter = fallForgiveness; // Prevent double jump.
-        }
+            Jump();
 
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
@@ -100,9 +93,7 @@ public class NewPlayer : PhysicsObject
 
         // Activate the attackBox when pressing Fire1 key.
         if (Input.GetButtonDown("Fire1"))
-        {
             animator.SetTrigger("attack");
-        }
 
         if (health <= 0)
             StartCoroutine(Die());
@@ -112,6 +103,16 @@ public class NewPlayer : PhysicsObject
         animator.SetFloat("velocityY", velocity.y);
         animator.SetBool("grounded", grounded);
         animator.SetFloat("attackDirectionY", Input.GetAxis("Vertical"));
+    }
+
+    private void Jump()
+    {
+        animatorFunctions.PlaySound("jump");
+        animatorFunctions.EmitParticles("footsteps");
+        velocity.y = jumpPower;
+
+        grounded = false;
+        fallForgivenessCounter = fallForgiveness; // Prevent double jump.
     }
 
     private IEnumerator InvulnerableCoroutine(float invulnerableTime)
@@ -201,7 +202,7 @@ public class NewPlayer : PhysicsObject
 
     public void SetSpawnPosition()
     {
-        this.gameObject.transform.position = GameObject.Find("SpawnLocation").transform.position;
+        gameObject.transform.position = GameObject.Find("SpawnLocation").transform.position;
     }
 
 }

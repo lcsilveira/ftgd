@@ -28,12 +28,12 @@ public class GameManager : MonoBehaviour
         // If the original game manager is here, the scene game manager is self-destroyed.
         // (Otherwise, the Start function will be called and this will become the Original Game Manager).
         if (GameObject.Find("OriginalGameManager"))
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        this.gameObject.name = "OriginalGameManager";
+        DontDestroyOnLoad(gameObject);
+        gameObject.name = "OriginalGameManager";
     }
 }

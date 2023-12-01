@@ -42,11 +42,11 @@ public class Collectable : MonoBehaviour
             else if (itemType == ItemType.Inventory)
             {
                 Sprite itemSprite;
-                itemSprite = inventoryIcon ? inventoryIcon : this.gameObject.GetComponent<SpriteRenderer>().sprite;
+                itemSprite = inventoryIcon ? inventoryIcon : gameObject.GetComponent<SpriteRenderer>().sprite;
                 NewPlayer.Instance.AddInventoryItem(inventoryItemName, itemSprite);
             }
             NewPlayer.Instance.UpdateUI();
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -47,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -89,6 +90,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: Foreground1
@@ -111,7 +113,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2796, y: 5036}
+    uvTransform: {x: 2884, y: 5103}
+    spritePosition: {x: 88, y: 67}
   - name: Foreground2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +135,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3424, y: 4048}
+    uvTransform: {x: 4438, y: 4122}
+    spritePosition: {x: 1014, y: 74}
   - name: Foreground3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +157,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3403, y: 4054}
+    uvTransform: {x: 5345, y: 4122}
+    spritePosition: {x: 1942, y: 68}
   - name: Foreground4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -174,7 +179,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -947, y: 5036}
+    uvTransform: {x: 1977, y: 5103}
+    spritePosition: {x: 2924, y: 67}
   - name: CloudBlurry
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -195,7 +201,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2604, y: 2172}
+    uvTransform: {x: 4826, y: 2172}
+    spritePosition: {x: 2222, y: 0}
   - name: Ground1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -216,7 +223,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1583, y: 3872}
+    uvTransform: {x: 6252, y: 4122}
+    spritePosition: {x: 4669, y: 250}
   - name: Ground2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -237,7 +245,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3106, y: 3875}
+    uvTransform: {x: 6988, y: 4122}
+    spritePosition: {x: 3882, y: 247}
   - name: Player Reference
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -258,7 +267,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3628, y: 4214}
+    uvTransform: {x: 4036, y: 5865}
+    spritePosition: {x: 408, y: 1651}
   - name: Screw
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -279,7 +289,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 6351, y: 3404}
+    uvTransform: {x: 8063, y: 4937}
+    spritePosition: {x: 1712, y: 1533}
   - name: Crane
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -300,7 +311,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1735, y: 4404}
+    uvTransform: {x: 2884, y: 6067}
+    spritePosition: {x: 1149, y: 1663}
   - name: Chain
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -321,7 +333,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3325, y: 4027}
+    uvTransform: {x: 4063, y: 5735}
+    spritePosition: {x: 738, y: 1708}
   - name: Enemy
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -342,7 +355,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 7574, y: 3459}
+    uvTransform: {x: 7961, y: 4937}
+    spritePosition: {x: 387, y: 1478}
   - name: Key
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -363,7 +377,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1907, y: 4101}
+    uvTransform: {x: 3928, y: 5604}
+    spritePosition: {x: 2021, y: 1503}
   - name: Gem
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -384,7 +399,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3694, y: 4455}
+    uvTransform: {x: 4241, y: 6067}
+    spritePosition: {x: 547, y: 1612}
   - name: Heart
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -405,7 +421,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3379, y: 3999}
+    uvTransform: {x: 3928, y: 5735}
+    spritePosition: {x: 549, y: 1736}
   - name: Lamppost
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -426,7 +443,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1149, y: 3652}
+    uvTransform: {x: 3791, y: 5103}
+    spritePosition: {x: 2642, y: 1451}
   - name: Bush
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -447,7 +465,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2606, y: 4604}
+    uvTransform: {x: 4055, y: 6067}
+    spritePosition: {x: 1449, y: 1463}
   - name: Box
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -468,7 +487,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2063, y: 4352}
+    uvTransform: {x: 3928, y: 5865}
+    spritePosition: {x: 1865, y: 1513}
   - name: Fence
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -489,7 +509,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 6573, y: 3421}
+    uvTransform: {x: 7724, y: 4937}
+    spritePosition: {x: 1151, y: 1516}
   - name: Cloud
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -510,7 +531,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -2852, y: 3726}
+    uvTransform: {x: 1977, y: 4122}
+    spritePosition: {x: 4829, y: 396}
   - name: TreePine
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -531,7 +553,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 5405, y: 2929}
+    uvTransform: {x: 7724, y: 4122}
+    spritePosition: {x: 2319, y: 1193}
   - name: LockedDoor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -552,7 +575,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2909, y: 4228}
+    uvTransform: {x: 3791, y: 5604}
+    spritePosition: {x: 882, y: 1376}
   - name: Midground2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -573,7 +597,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -256, y: 2146}
+    uvTransform: {x: 4, y: 2172}
+    spritePosition: {x: 260, y: 26}
   - name: Background1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -594,7 +619,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -308, y: 1929}
+    uvTransform: {x: 2322, y: 2172}
+    spritePosition: {x: 2630, y: 243}
   - name: Background2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -615,7 +641,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -5423, y: 4096}
+    uvTransform: {x: 4, y: 4122}
+    spritePosition: {x: 5427, y: 26}
   - name: Sky
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -637,6 +664,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
   - name: CityGraphics_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -658,6 +686,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4114, y: 5815}
+    spritePosition: {x: 0, y: 0}
   characterData:
     bones: []
     parts: []
